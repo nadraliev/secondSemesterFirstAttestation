@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lists
 {
-    public class StackNode
+    public class QueueNode
     {
-        public int inf { get; set; }
-        public StackNode next { get; set; }
 
-        public StackNode(int inf)
+        public int inf { get; set; }
+        public QueueNode next { get; set; }
+
+        public QueueNode(int inf)
         {
             this.inf = inf;
         }
+
     }
 }
