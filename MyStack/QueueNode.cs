@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lists
 {
-    public class QueueNode
+    public class QueueNode<T>
     {
 
-        public int inf { get; set; }
-        public QueueNode next { get; set; }
+        public T inf { get; set; }
+        public QueueNode<T> next { get; set; }
 
-        public QueueNode(int inf)
+        public QueueNode(T inf)
         {
             this.inf = inf;
         }

@@ -27,7 +27,7 @@ namespace CountingGame
         {
             int numberN = (int)inputNumberN.Value;
             int numberK = (int)inputNumberK.Value;
-            MyQueue queue = new MyQueue();
+            MyQueue<int> queue = new MyQueue<int>();
             for (int i = 1; i <= numberN; i++) queue.Enqueue(i);
             outputNumberOfLast.ResetText();
             queue.findLastGame(numberK);
