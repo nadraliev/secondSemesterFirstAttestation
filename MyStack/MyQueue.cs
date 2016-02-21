@@ -148,7 +148,7 @@ namespace Lists
                 for (int i = 1; i < count; i++)
                 {
                     temp = temp.next;
-                    output[1] = temp.inf;
+                    output[i] = temp.inf;
                 }
             }
             return output;
