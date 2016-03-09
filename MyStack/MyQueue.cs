@@ -8,8 +8,8 @@ namespace Lists
 {
     public class MyQueue<T>
     {
-        QueueNode<T> head;
-        QueueNode<T> tail;
+        QueueNode<T> head { get; set; }
+        QueueNode<T> tail { get; set; }
 
         public bool isEmpty {
             get
@@ -38,27 +38,71 @@ namespace Lists
         }
 
         
-        public bool isProgression
+        public bool isArithmeticProgression
         {
             get
             {
                 switch (count)
                 {
                     case 0:
-                        return false;
-                        break;
                     case 1:
-                        return false;
-                        break;
                     case 2:
                         return true;
                         break;
                     default:
-                        dynamic first = head.inf;
-                        dynamic second = head.next.inf;
-                        dynamic third = head.next.next.inf;
-                        dynamic difference = .0000000000001;
-                        return ((second - first) - (third - second) <= difference || (second / first) - (third / second) <= difference) ;
+                        MyQueue<T> newQueue = new MyQueue<T>();
+                        dynamic curr = Dequeue();
+                        newQueue.Enqueue(curr);
+                        dynamic next = Dequeue();
+                        newQueue.Enqueue(next);
+                        dynamic diff = next - curr;
+                        dynamic maxDiff = .000000001;
+                        bool result = true;
+                        while (!isEmpty)
+                        {
+                            curr = next;
+                            next = Dequeue();
+                            newQueue.Enqueue(next);
+                            if (Math.Abs(next - curr - diff) > maxDiff) result = false;
+                        }
+                        head = newQueue.head;
+                        tail = newQueue.tail;
+                        return result;
+                        break;
+                }
+            }
+        }
+
+        public bool isGeometricProgression
+        {
+            get
+            {
+                switch (count)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        return true;
+                        break;
+                    default:
+                        MyQueue<T> newQueue = new MyQueue<T>();
+                        dynamic curr = Dequeue();
+                        newQueue.Enqueue(curr);
+                        dynamic next = Dequeue();
+                        newQueue.Enqueue(next);
+                        dynamic diff = next/curr;
+                        dynamic maxDiff = .000000001;
+                        bool result = true;
+                        while (!isEmpty)
+                        {
+                            curr = next;
+                            next = Dequeue();
+                            newQueue.Enqueue(next);
+                            if (Math.Abs(next/curr - diff) > maxDiff) result = false;
+                        }
+                        head = newQueue.head;
+                        tail = newQueue.tail;
+                        return result;
                         break;
                 }
             }
