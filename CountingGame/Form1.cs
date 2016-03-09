@@ -25,6 +25,7 @@ namespace CountingGame
 
         private void calculateNumberOfLast_Click(object sender, EventArgs e)
         {
+            //handle click
             int numberN = (int)inputNumberN.Value;
             int numberK = (int)inputNumberK.Value;
             MyQueue<int> queue = new MyQueue<int>();
